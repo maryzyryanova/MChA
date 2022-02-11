@@ -26,11 +26,7 @@ b = np.array([
 def main():
     matrixA = countA()
     print(matrixA)
-    k = 1
-    for i in 5:
-        for j in 5:
-            matrixA[i][j] = matrixA[i][j] - count_q(i, k, matrixA) 
-        k += 1
+    
 
 #find matrix A
 def countA():
