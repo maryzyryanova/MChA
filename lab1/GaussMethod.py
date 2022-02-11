@@ -25,8 +25,7 @@ b = np.array([
 #main function
 def main():
     matrixA = countA()
-    print(matrixA)
-    
+    print(matrixA)  
 
 #find matrix A
 def countA():
