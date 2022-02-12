@@ -27,13 +27,17 @@ b = np.array([
 #main function
 def main():
     matrixA = countA()
-    print(matrixA)  
+    print(f"Matrix b: \n{b}")
+    print(f"Matrix A: \n{matrixA}")  
     straight_stroke(matrixA)
     invert_stroke(matrixA)
 
 #find matrix A
 def countA():
     B = 10 * C
+    print(f"Matrix C: \n{C}")
+    print(f"Matrix B: \n{B}")
+    print(f"Matrix D: \n{D}")
     B.shape == D.shape #check the equality of matrixes
     A = B + D 
     return A
@@ -48,7 +52,7 @@ def straight_stroke(matrixA):
     for i in range(1, 5):
         for j in range(i, 5):
             q = count_q(i, j, matrixA)
-            for k in range(6):
+            for k in range(5):
                 matrixA[j][k] = matrixA[j][k] - q * matrixA[i-1][k]
     return matrixA
 
