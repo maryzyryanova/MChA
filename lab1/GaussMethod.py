@@ -28,8 +28,9 @@ b = np.array([
 def main():
     matrixA = countA()
     print(f"\nMatrix b: \n{b}")
-    print(f"\nMatrix A: \n{matrixA}\n")  
-    straight_stroke(matrixA)
+    print(f"\nMatrix A: \n{matrixA}")  
+    matrixA = straight_stroke(matrixA)
+    print(f"\nMatrix A after the straight stroke: \n{matrixA}\n")
     invert_stroke(matrixA)
 
 #find matrix A
@@ -56,11 +57,11 @@ def straight_stroke(matrixA):
                 matrixA[j][k] = matrixA[j][k] - q * matrixA[i-1][k]
     return matrixA
 
-#invert stroke
+#invert stroke (something wrong here)
 def invert_stroke(matrixA):
     x = [0 for i in range(5)] #the list of the koeffs
     for i in range(4, -1, -1):
-        x[i] = matrixA[i][4]/matrixA[i][i]
+        x[i] = matrixA[i][i]/b[i]
         for j in range(4, -1, -1):
             x[i] = x[i] - matrixA[i][j] * x[j] / matrixA[i][i]
     for i in range(5):
