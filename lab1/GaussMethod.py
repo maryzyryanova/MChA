@@ -29,6 +29,7 @@ def main():
     matrixA = countA()
     print(matrixA)  
     straight_stroke(matrixA)
+    invert_stroke(matrixA)
 
 #find matrix A
 def countA():
@@ -58,7 +59,7 @@ def invert_stroke(matrixA):
         x[i] = matrixA[i][4]/matrixA[i][i]
         for j in range(4, -1, -1):
             x[i] = x[i] - matrixA[i][j] * x[j] / matrixA[i][i]
-    return x
-
+    for i in range(5):
+        print(f"x[{i+1}] = {x[i]}")
 
 main()
