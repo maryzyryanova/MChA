@@ -26,6 +26,8 @@ b = np.array([
 def main():
     matrixA = countA()
     print(matrixA)  
+    straight_stroke(matrixA)
+
 
 #find matrix A
 def countA():
@@ -35,9 +37,17 @@ def countA():
     return A
 
 #main koeff q
-def count_q(i, k, matrixA):
-    q = np.array()
-    q[i][k] = matrixA[i][k] / matrixA[k][k] #counting the main koeff
-    return q[i][k]
+def count_q(i, j, matrixA):
+    q = matrixA[j][i-1] / matrixA[i-1][i-1] #counting the main koeff
+    return q
+
+#straight stroke
+def straight_stroke(matrixA):
+    for i in range(1, 5):
+        for j in range(i, 5):
+            q = count_q(i, j, matrixA)
+            for k in range(6):
+                matrixA[j][k] = matrixA[j][k] - q * matrixA[i-1][k]
+
 
 main()
