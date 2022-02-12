@@ -27,17 +27,17 @@ b = np.array([
 #main function
 def main():
     matrixA = countA()
-    print(f"Matrix b: \n{b}")
-    print(f"Matrix A: \n{matrixA}")  
+    print(f"\nMatrix b: \n{b}")
+    print(f"\nMatrix A: \n{matrixA}\n")  
     straight_stroke(matrixA)
     invert_stroke(matrixA)
 
 #find matrix A
 def countA():
     B = 10 * C
-    print(f"Matrix C: \n{C}")
-    print(f"Matrix B: \n{B}")
-    print(f"Matrix D: \n{D}")
+    print(f"\nMatrix C: \n{C}")
+    print(f"\nMatrix B: \n{B}")
+    print(f"\nMatrix D: \n{D}")
     B.shape == D.shape #check the equality of matrixes
     A = B + D 
     return A
