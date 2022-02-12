@@ -1,5 +1,7 @@
+#Gauss Method for solving SLAE
 import numpy as np
 
+#defining matrixes 
 C = np.array([
     [0.2, 0, 0.2, 0, 0], 
     [0, 0.2, 0, 0.2, 0], 
@@ -28,7 +30,6 @@ def main():
     print(matrixA)  
     straight_stroke(matrixA)
 
-
 #find matrix A
 def countA():
     B = 10 * C
@@ -48,6 +49,16 @@ def straight_stroke(matrixA):
             q = count_q(i, j, matrixA)
             for k in range(6):
                 matrixA[j][k] = matrixA[j][k] - q * matrixA[i-1][k]
+    return matrixA
+
+#invert stroke
+def invert_stroke(matrixA):
+    x = [0 for i in range(5)] #the list of the koeffs
+    for i in range(4, -1, -1):
+        x[i] = matrixA[i][4]/matrixA[i][i]
+        for j in range(4, -1, -1):
+            x[i] = x[i] - matrixA[i][j] * x[j] / matrixA[i][i]
+    return x
 
 
 main()
