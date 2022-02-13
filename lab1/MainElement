@@ -18,3 +18,30 @@ D = np.array([
     [0.81, 0.67, 0.92, -0.53, 2.33]
 ])
 
+#main function
+def main():
+    matrixA = countA()
+    print(f"\nMatrix b: \n{b}")
+    print(f"\nMatrix A: \n{matrixA}")
+    findMax(matrixA)
+
+#find matrix A
+def countA():
+    B = 10 * C
+    print(f"\nMatrix C: \n{C}")
+    print(f"\nMatrix B: \n{B}")
+    print(f"\nMatrix D: \n{D}")
+    B.shape == D.shape #check the equality of matrixes
+    A = B + D 
+    return A
+
+def findMax(matrixA):
+    max = 0
+    for i in range(5):
+        for j in range(i, 5):
+            if(matrixA[i][j] > max):
+                max = matrixA[i][j]
+    print(max)
+            
+
+main()
