@@ -1,4 +1,4 @@
-#Gauss Method for solving SLAE
+#Method of removing main element for solving SLAE
 import numpy as np
 
 #defining matrixes 
@@ -35,13 +35,15 @@ def countA():
     A = B + D 
     return A
 
+#max element in a row 
 def findMax(matrixA):
     max = 0
-    for i in range(5):
-        for j in range(i, 5):
+    str = 0
+    for i in range(5): 
+        for j in range(i, 5): 
             if(matrixA[i][j] > max):
                 max = matrixA[i][j]
-    print(max)
-            
+                str = i
+    print(f"\nMax = {max} in a row {str+1}") 
 
 main()
