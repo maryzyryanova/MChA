@@ -23,7 +23,7 @@ def main():
     matrixA = countA()
     print(f"\nMatrix b: \n{b}")
     print(f"\nMatrix A: \n{matrixA}")
-    mainElement(matrixA)
+    mainElement(matrixA, b)
 
 #find matrix A
 def countA():
@@ -36,7 +36,7 @@ def countA():
     return A
 
 #main element method
-def mainElement(matrixA):
+def mainElement(matrixA, b):
     max = 0
     str = 0
     for i in range(matrixA.shape - 1): 
