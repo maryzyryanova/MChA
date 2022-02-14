@@ -39,8 +39,8 @@ def countA():
 def mainElement(matrixA):
     max = 0
     str = 0
-    for i in range(5): 
-        for j in range(i, 5): 
+    for i in range(matrixA.shape - 1): 
+        for j in range(i, matrixA.shape): 
             if(matrixA[i][j] > max):
                 max = matrixA[i][j]
                 str = i
