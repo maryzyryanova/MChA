@@ -39,13 +39,27 @@ def countA():
 def mainElement(matrixA, b):
     max = 0
     str = 0
-    for i in range(matrixA.shape - 1): 
-        for j in range(i, matrixA.shape): 
+    for i in range(matrixA.shape[0] - 1): 
+        for j in range(i, matrixA.shape[0]): 
             if(matrixA[i][j] > max):
                 max = matrixA[i][j]
                 str = i
         
+        #changing rows in a matrix A
+        changing = np.repeat(matrixA[i], 1)
+        matrixA[i] = matrixA[str]
+        matrixA[str] = changing
+
+        #changing rows in a matrix b
+        changing = np.repeat(b[i], 1)
+        b[i] = b[str]
+        b[str] = changing
+
+        #dividing on the max element
+        matrixA[i] /= max
+        b[i] /= max
+
         
-    
+
 
 main()
