@@ -67,6 +67,16 @@ def mainElement(matrixA, b):
 
     #finding roots
     roots = [b[b.shape[0] - 1] / (matrixA[matrixA.shape[0] - 1][matrixA.shape[0] - 1])]
-    
+    for i in range(matrixA.shape[0] - 1, -1, -1):
+        temp = b[i]
+        for j in range(len(roots)):
+            temp -= roots[j] * matrixA[i][matrixA.shape[0] - 1 - j]
+        roots.append(temp)
+
+    #reverting the list
+    x = []
+    for i in reversed(temp) : 
+        x.append(i)
+    return x
 
 main()
