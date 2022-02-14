@@ -66,11 +66,7 @@ def mainElement(matrixA, b):
             b[i] -= b[k] * temp
 
     #finding roots
-    x = [0 for i in range(matrixA.shape)] #the list of the koeffs
-    for i in range(matrixA.shape - 1, -1, -1):
-        x[i] = b[i] - sum([matrixA[i][j] * x[j] for j in range(i+1, matrixA.shape - 1)])/matrixA[i][i]
-    print("The result:")
-    for i in range(matrixA.shape):
-        print(f"x[{i+1}] = {x[i]}")s
+    roots = [b[b.shape[0] - 1] / (matrixA[matrixA.shape[0] - 1][matrixA.shape[0] - 1])]
+    
 
 main()
