@@ -23,7 +23,7 @@ def main():
     matrixA = countA()
     print(f"\nMatrix b: \n{b}")
     print(f"\nMatrix A: \n{matrixA}")
-    findMax(matrixA)
+    mainElement(matrixA)
 
 #find matrix A
 def countA():
@@ -35,8 +35,8 @@ def countA():
     A = B + D 
     return A
 
-#max element in a row 
-def findMax(matrixA):
+#main element method
+def mainElement(matrixA):
     max = 0
     str = 0
     for i in range(5): 
@@ -44,6 +44,7 @@ def findMax(matrixA):
             if(matrixA[i][j] > max):
                 max = matrixA[i][j]
                 str = i
-    print(f"\nMax = {max} in a row {str+1}") 
+        
+    
 
 main()
