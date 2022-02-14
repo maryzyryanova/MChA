@@ -37,13 +37,13 @@ def countA():
 
 #main element method
 def mainElement(matrixA, b):
-    max = 0
-    str = 0
     for i in range(matrixA.shape[0] - 1): 
+        max = 0
+        str = 0
         for j in range(i, matrixA.shape[0]): 
-            if(matrixA[i][j] > max):
-                max = matrixA[i][j]
-                str = i
+            if(abs(matrixA[j][i]) > abs(max)):
+                max = matrixA[j][i]
+                str = j
         
         #changing rows in a matrix A
         changing = np.repeat(matrixA[i], 1)
@@ -62,21 +62,22 @@ def mainElement(matrixA, b):
         #counting new elements
         for k in range(i+1, matrixA.shape[0]):
             temp = matrixA[k][i]
-            matrixA[i] -= matrixA[k] * temp 
-            b[i] -= b[k] * temp
+            matrixA[k] -= matrixA[i] * temp 
+            b[k] -= b[i] * temp
 
     #finding roots
     roots = [b[b.shape[0] - 1] / (matrixA[matrixA.shape[0] - 1][matrixA.shape[0] - 1])]
-    for i in range(matrixA.shape[0] - 1, -1, -1):
+    for i in range(matrixA.shape[0] - 2, -1, -1):
         temp = b[i]
         for j in range(len(roots)):
             temp -= roots[j] * matrixA[i][matrixA.shape[0] - 1 - j]
         roots.append(temp)
-
+    
     #reverting the list
     x = []
-    for i in reversed(temp) : 
+    for i in reversed(roots) : 
         x.append(i)
-    return x
+    for i in range(len(x)):
+        print(f"x[{i+1}] = {x[i]}")
 
 main()

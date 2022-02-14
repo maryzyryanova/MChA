@@ -45,21 +45,21 @@ def count_q(i, j, matrixA):
 
 #straight stroke
 def straight_stroke(matrixA):
-    for i in range(1, matrixA.shape):
-        for j in range(i, matrixA.shape):
+    for i in range(1, matrixA.shape[0]):
+        for j in range(i, matrixA.shape[0]):
             q = count_q(i, j, matrixA)
-            for k in range(matrixA.shape):
+            for k in range(matrixA.shape[0]):
                 matrixA[j][k] = matrixA[j][k] - q * matrixA[i-1][k]
                 b[k] -= q * b[i]
     return matrixA
 
 #invert stroke
 def invert_stroke(matrixA):
-    x = [0 for i in range(matrixA.shape)] #the list of the koeffs
-    for i in range(matrixA.shape - 1, -1, -1):
-        x[i] = b[i] - sum([matrixA[i][j] * x[j] for j in range(i+1, matrixA.shape - 1)])/matrixA[i][i]
+    x = [0 for i in range(matrixA.shape[0])] #the list of the koeffs
+    for i in range(matrixA.shape[0] - 1, -1, -1):
+        x[i] = b[i] - sum([matrixA[i][j] * x[j] for j in range(i+1, matrixA.shape[0] - 1)])/matrixA[i][i]
     print("The result:")
-    for i in range(matrixA.shape):
+    for i in range(matrixA.shape[0]):
         print(f"x[{i+1}] = {x[i]}")
 
 main()
