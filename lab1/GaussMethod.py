@@ -23,10 +23,8 @@ def main():
     matrixA = countA()
     print(f"\nMatrix b: \n{b}")
     print(f"\nMatrix A: \n{matrixA}")  
-    matrixA = straight_stroke(matrixA)
-    print(f"\nMatrix A after the straight stroke: \n{matrixA}")
-    print(f"\nMatrix b after the straight stroke: \n{b}\n")
-    invert_stroke(matrixA)
+    
+    gaussMethod(matrixA)
 
 #find matrix A
 def countA():
@@ -34,30 +32,23 @@ def countA():
     print(f"\nMatrix C: \n{C}")
     print(f"\nMatrix B: \n{B}")
     print(f"\nMatrix D: \n{D}")
-    B.shape == D.shape #check the equality of matrixes
     A = B + D 
     return A
-
-#main koeff q
-def count_q(i, j, matrixA):
-    q = matrixA[j][i-1] / matrixA[i-1][i-1] #counting the main koeff
-    return q
-
-#straight stroke
-def straight_stroke(matrixA):
+    
+def gaussMethod(matrixA):
     for i in range(1, matrixA.shape[0]):
         for j in range(i, matrixA.shape[0]):
-            q = count_q(i, j, matrixA)
+            q = matrixA[j][i-1] / matrixA[i-1][i-1]
+            b[j] -= q * b[i-1]
             for k in range(matrixA.shape[0]):
-                matrixA[j][k] = matrixA[j][k] - q * matrixA[i-1][k]
-                b[k] -= q * b[i]
-    return matrixA
+                matrixA[j][k] -= q * matrixA[i-1][k]
 
-#invert stroke
-def invert_stroke(matrixA):
+    print(f"\nMatrix A after the straight stroke: \n{matrixA}")
+    print(f"\nMatrix b after the straight stroke: \n{b}\n")
+
     x = [0 for i in range(matrixA.shape[0])] #the list of the koeffs
     for i in range(matrixA.shape[0] - 1, -1, -1):
-        x[i] = (b[i] - sum([matrixA[i][j] * x[j] for j in range(i+1, matrixA.shape[0] - 1)]))/matrixA[i][i]
+        x[i] = (b[i] - sum([matrixA[i][j] * x[j] for j in range(i+1, matrixA.shape[0])]))/matrixA[i][i]
     print("The result:")
     for i in range(matrixA.shape[0]):
         print(f"x[{i+1}] = {x[i]}")
