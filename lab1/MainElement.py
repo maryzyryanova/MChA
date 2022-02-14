@@ -45,6 +45,7 @@ def mainElement(matrixA, b):
                 max = matrixA[i][j]
                 str = i
         
+        
     
 
 main()
