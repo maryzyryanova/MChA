@@ -57,7 +57,7 @@ def straight_stroke(matrixA):
 def invert_stroke(matrixA):
     x = [0 for i in range(matrixA.shape[0])] #the list of the koeffs
     for i in range(matrixA.shape[0] - 1, -1, -1):
-        x[i] = b[i] - sum([matrixA[i][j] * x[j] for j in range(i+1, matrixA.shape[0] - 1)])/matrixA[i][i]
+        x[i] = (b[i] - sum([matrixA[i][j] * x[j] for j in range(i+1, matrixA.shape[0] - 1)]))/matrixA[i][i]
     print("The result:")
     for i in range(matrixA.shape[0]):
         print(f"x[{i+1}] = {x[i]}")

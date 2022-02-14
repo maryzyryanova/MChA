@@ -31,7 +31,6 @@ def countA():
     print(f"\nMatrix C: \n{C}")
     print(f"\nMatrix B: \n{B}")
     print(f"\nMatrix D: \n{D}")
-    B.shape == D.shape #check the equality of matrixes
     A = B + D 
     return A
 
