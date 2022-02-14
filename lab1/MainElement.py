@@ -62,11 +62,15 @@ def mainElement(matrixA, b):
         #counting new elements
         for k in range(i+1, matrixA.shape[0]):
             temp = matrixA[k][i]
-            matrixA[i] = matrixA[k] * temp 
-            b[i] = b[k] * temp
-            
+            matrixA[i] -= matrixA[k] * temp 
+            b[i] -= b[k] * temp
 
-
-
+    #finding roots
+    x = [0 for i in range(matrixA.shape)] #the list of the koeffs
+    for i in range(matrixA.shape - 1, -1, -1):
+        x[i] = b[i] - sum([matrixA[i][j] * x[j] for j in range(i+1, matrixA.shape - 1)])/matrixA[i][i]
+    print("The result:")
+    for i in range(matrixA.shape):
+        print(f"x[{i+1}] = {x[i]}")s
 
 main()

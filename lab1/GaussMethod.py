@@ -53,7 +53,7 @@ def straight_stroke(matrixA):
                 b[k] -= q * b[i]
     return matrixA
 
-#invert stroke (something wrong here)
+#invert stroke
 def invert_stroke(matrixA):
     x = [0 for i in range(matrixA.shape)] #the list of the koeffs
     for i in range(matrixA.shape - 1, -1, -1):
