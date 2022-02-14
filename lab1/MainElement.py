@@ -59,7 +59,13 @@ def mainElement(matrixA, b):
         matrixA[i] /= max
         b[i] /= max
 
-        
+        #counting new elements
+        for k in range(matrixA.shape[0]):
+            temp = matrixA[k][i]
+            
+            
+
+
 
 
 main()
