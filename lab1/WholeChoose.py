@@ -1,4 +1,4 @@
-#Method of removing main element for solving SLAE
+#Gauss Method of choosing main element in the whole matrix for solving SLAE
 import numpy as np
 
 #defining matrixes 
