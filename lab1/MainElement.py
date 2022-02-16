@@ -77,6 +77,6 @@ def mainElement(matrixA, b):
     for i in reversed(roots) : 
         x.append(i)
     for i in range(len(x)):
-        print(f"x[{i+1}] = {x[i]}")
+        print(f"x[{i+1}] = {round(x[i], 4)}")
 
 main()

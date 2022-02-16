@@ -38,19 +38,21 @@ def countA():
 def gaussMethod(matrixA):
     for i in range(1, matrixA.shape[0]):
         for j in range(i, matrixA.shape[0]):
-            q = matrixA[j][i-1] / matrixA[i-1][i-1]
-            b[j] -= q * b[i-1]
-            for k in range(matrixA.shape[0]):
-                matrixA[j][k] -= q * matrixA[i-1][k]
+            if (matrixA[i-1][i-1] != 0):
+                q = matrixA[j][i-1] / matrixA[i-1][i-1]
+                b[j] -= round(q * b[i-1], 4)
+                for k in range(matrixA.shape[0]):
+                    matrixA[j][k] = round(matrixA[j][k] - q * matrixA[i-1][k], 4)
 
     print(f"\nMatrix A after the straight stroke: \n{matrixA}")
     print(f"\nMatrix b after the straight stroke: \n{b}\n")
 
     x = [0 for i in range(matrixA.shape[0])] #the list of the koeffs
     for i in range(matrixA.shape[0] - 1, -1, -1):
-        x[i] = (b[i] - sum([matrixA[i][j] * x[j] for j in range(i+1, matrixA.shape[0])]))/matrixA[i][i]
+        if(matrixA[i][i] != 0):
+            x[i] = (b[i] - sum([matrixA[i][j] * x[j] for j in range(i+1, matrixA.shape[0])]))/matrixA[i][i]
     print("The result:")
     for i in range(matrixA.shape[0]):
-        print(f"x[{i+1}] = {x[i]}")
+        print(f"x[{i+1}] = {round(x[i], 4)}")
 
 main()
