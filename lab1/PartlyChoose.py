@@ -34,16 +34,22 @@ def countA():
 
 def findMainElement(matrixA, b):
     for i in range(0, matrixA.shape[0]):
+
+        #find max element and max index
         max_index = i
         max_element = matrixA[i][i]
         for j in range(i+1, matrixA.shape[0]):
             if(abs(max_element) < abs(matrixA[j][i])):
                 max_index = j
                 max_element = matrixA[j][i]
+
+        #swapping strings
         if(i != max_index):
             b[i], b[max_index] = b[max_index], b[i]
             for j in range(i, matrixA.shape[0]):
                 matrixA[i][j], matrixA[max_index][j] = matrixA[max_index][j], matrixA[i][j]
+        
+        #to triangle form
         for j in range(i+1, matrixA.shape[0]):
             if(matrixA[i][i] != 0):
                 temp = matrixA[j][i] / matrixA[i][i]
@@ -55,18 +61,19 @@ def findMainElement(matrixA, b):
     print(f"\nMatrix b: {b}")    
 
     #finding roots
-    x = []
-    for i in range(matrixA.shape[0] - 1, 0, -1):
+    x = [0 for i in range(matrixA.shape[0])]
+    for i in range(matrixA.shape[0] - 1, -1, -1):
         for j in range(i, matrixA.shape[0]):
             if(j == matrixA.shape[0] - 1): 
                 break
             else:
                 b[i] -= matrixA[i][j+1] * x[j+1]
-            if(matrixA[i][i] != 0):
-                x[i] = b[i] / matrixA[i][i]
+        if(matrixA[i][i] != 0):
+            x[i] = b[i] / matrixA[i][i]
 
     #printing roots
-    for i in range(x.shape[0]):
+    print("\nThe result: ")
+    for i in range(len(x)):
         print(f"x[{i+1}] = {x[i]}")
 
 main()
