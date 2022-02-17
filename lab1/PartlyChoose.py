@@ -20,7 +20,9 @@ D = np.array([
 
 def main():
     matrixA = countA()
-    findMainElement(matrixA)
+    print(f"\nMatrix b: \n{b}")
+    print(f"\nMatrix A: \n{matrixA}")
+    findMainElement(matrixA, b)
 
 def countA():
     B = 10 * C
@@ -30,7 +32,7 @@ def countA():
     A = B + D 
     return A
 
-def findMainElement(matrixA):
+def findMainElement(matrixA, b):
     for i in range(0, matrixA.shape[0]):
         max_index = i
         max_element = matrixA[i][i]
@@ -39,15 +41,17 @@ def findMainElement(matrixA):
                 max_index = j
                 max_element = matrixA[j][i]
         if(i != max_index):
-            change, b[i], b[max_index] = b[i], b[max_index], change
-        for j in range(i, matrixA.shape[0]):
+            b[i], b[max_index] = b[max_index], b[i]
+            for j in range(i, matrixA.shape[0]):
+                matrixA[i][j], matrixA[max_index][j] = matrixA[max_index][j], matrixA[i][j]
+        for j in range(i+1, matrixA.shape[0]):
             if(matrixA[i][i] != 0):
-                temp = matrixA[j][i] /matrixA[i][i]
+                temp = matrixA[j][i] / matrixA[i][i]
                 b[j] -= temp * b[i]
                 matrixA[j][i] = 0
                 for k in range(i + 1, matrixA.shape[0]):
-                    matrixA[j][k] -= temp * matrixA[i][k]
-            
-    print(f"\nMatrix in a triangle form: \n{matrixA}")         
-
+                    matrixA[j][k] -= temp * matrixA[i][k]      
+    print(f"\nMatrix in a triangle form: \n{matrixA}")  
+    print(f"\nMatrix b: {b}")     
+    
 main()
