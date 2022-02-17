@@ -12,14 +12,10 @@ def mainElement(matrixA, b):
                 str = j
         
         #changing rows in a matrix A
-        changing = np.repeat(matrixA[i], 1)
-        matrixA[i] = matrixA[str]
-        matrixA[str] = changing
+        matrixA[i], matrixA[str] = matrixA[str], matrixA[i]
 
         #changing rows in a matrix b
-        changing = np.repeat(b[i], 1)
-        b[i] = b[str]
-        b[str] = changing
+        b[i], b[str] = b[str], b[i]
 
         #dividing on the max element
         matrixA[i] /= max
@@ -32,6 +28,7 @@ def mainElement(matrixA, b):
             b[k] -= b[i] * temp
     
     #finding roots
+    matrixA = np.array(matrixA)
     roots = [b[b.shape[0] - 1] / (matrixA[matrixA.shape[0] - 1][matrixA.shape[0] - 1])]
     for i in range(matrixA.shape[0] - 2, -1, -1):
         temp = b[i]
