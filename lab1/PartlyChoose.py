@@ -56,12 +56,12 @@ def findMainElement(matrixA, b):
 
     #finding roots
     x = []
-    for i in range(matrixA.shape[0] - 1, -1, -1):
+    for i in range(matrixA.shape[0] - 1, 0, -1):
         for j in range(i, matrixA.shape[0]):
             if(j == matrixA.shape[0] - 1): 
                 break
             else:
-                b[i] -= matrixA[i][j + 1] * x[j+1]
+                b[i] -= matrixA[i][j+1] * x[j+1]
             if(matrixA[i][i] != 0):
                 x[i] = b[i] / matrixA[i][i]
 
