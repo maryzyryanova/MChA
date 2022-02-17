@@ -24,7 +24,12 @@ def findMainElement(matrixA, b):
                 b[j] -= temp * b[i]
                 matrixA[j][i] = 0
                 for k in range(i + 1, matrixA.shape[0]):
-                    matrixA[j][k] -= round(temp * matrixA[i][k], 4)
+                    matrixA[j][k] -= (int)(temp * matrixA[i][k] * 10000) / 10000
+   
+    #round b
+    for i in range(matrixA.shape[0]):
+        b[i] = (int)(b[i] * 10000) / 10000
+        
     print(f"\nMatrix in a triangle form: \n{matrixA}")  
     print(f"\nMatrix b: {b}")    
 

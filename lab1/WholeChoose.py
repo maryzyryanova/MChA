@@ -23,9 +23,15 @@ def mainElement(matrixA, b):
 
         #counting new elements
         for k in range(i+1, matrixA.shape[0]):
-            temp = matrixA[k][i]
-            matrixA[k] -= matrixA[i] * temp 
+            temp = round(matrixA[k][i], 4)
+            matrixA[k] -= matrixA[i] * temp
             b[k] -= b[i] * temp
+    #round elements
+    for i in range(matrixA.shape[0]):
+        b[i] = (int)(b[i] * 10000) / 10000
+        for j in range(matrixA.shape[0]):
+            matrixA[i][j] = (int)(matrixA[i][j] * 10000) / 10000
+
     print(f"\nMatrix A after transforming into a triangle fotm: \n{matrixA}")
     print(f"\nMatrix b after transforming into a triangle fotm: \n{b}")
 
