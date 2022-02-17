@@ -52,6 +52,21 @@ def findMainElement(matrixA, b):
                 for k in range(i + 1, matrixA.shape[0]):
                     matrixA[j][k] -= temp * matrixA[i][k]      
     print(f"\nMatrix in a triangle form: \n{matrixA}")  
-    print(f"\nMatrix b: {b}")     
-    
+    print(f"\nMatrix b: {b}")    
+
+    #finding roots
+    x = []
+    for i in range(matrixA.shape[0] - 1, -1, -1):
+        for j in range(i, matrixA.shape[0]):
+            if(j == matrixA.shape[0] - 1): 
+                break
+            else:
+                b[i] -= matrixA[i][j + 1] * x[j+1]
+            if(matrixA[i][i] != 0):
+                x[i] = b[i] / matrixA[i][i]
+
+    #printing roots
+    for i in range(x.shape[0]):
+        print(f"x[{i+1}] = {x[i]}")
+
 main()
