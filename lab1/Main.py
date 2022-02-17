@@ -29,4 +29,13 @@ def countA(C, D):
     A = B + D 
     return A
 
-gauss_method.gaussMethod(count(C, D), b)
+A = countA(C, D)
+
+print("1. Using Gauss method:")
+gauss_method.gaussMethod(A, b)
+
+print("2. Using method of choosing in columns: ")
+whole_choose.mainElement(A, b)
+
+print("3. Using method of choosing in the whole matrix: ")
+partly_choose.findMainElement(A, b)
