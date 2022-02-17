@@ -1,36 +1,4 @@
 #Gauss Method of choosing main element in the columns matrix for solving SLAE
-import numpy as np
-
-#defining matrixes 
-b = np.array([4.2 for i in range(5)])
-C = np.array([
-    [0.2, 0, 0.2, 0, 0], 
-    [0, 0.2, 0, 0.2, 0], 
-    [0.2, 0, 0.2, 0, 0.2],
-    [0, 0.2, 0, 0.2, 0],
-    [0, 0, 0.2, 0, 0.2]
-])
-D = np.array([
-    [2.33, 0.81, 0.67, 0.92, -0.53], 
-    [-0.53, 2.33, 0.81, 0.67, 0.92], 
-    [0.92, -0.53, 2.33, 0.81, 0.67], 
-    [0.67, 0.92, -0.53, 2.33, 0.81], 
-    [0.81, 0.67, 0.92, -0.53, 2.33]
-])
-
-def main():
-    matrixA = countA()
-    print(f"\nMatrix b: \n{b}")
-    print(f"\nMatrix A: \n{matrixA}")
-    findMainElement(matrixA, b)
-
-def countA():
-    B = 10 * C
-    print(f"\nMatrix C: \n{C}")
-    print(f"\nMatrix B: \n{B}")
-    print(f"\nMatrix D: \n{D}")
-    A = B + D 
-    return A
 
 def findMainElement(matrixA, b):
     for i in range(0, matrixA.shape[0]):
@@ -75,5 +43,3 @@ def findMainElement(matrixA, b):
     print("\nThe result: ")
     for i in range(len(x)):
         print(f"x[{i+1}] = {x[i]}")
-
-main()
