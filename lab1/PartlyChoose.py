@@ -45,7 +45,7 @@ def findMainElement(matrixA):
             b[j] -= temp * b[i]
             matrixA[j][i] = 0
             for k in range(i + 1, matrixA.shape[0]):
-                matrixA[j][k] -= temp & matrixA[i][k]
+                matrixA[j][k] -= temp * matrixA[i][k]
     print(f"Matrix in a triangle form: \n{matrixA}")         
 
 main()
