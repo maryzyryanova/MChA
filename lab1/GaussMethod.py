@@ -7,7 +7,7 @@ def gaussMethod(matrixA, b):
                 q = matrixA[j][i-1] / matrixA[i-1][i-1]
                 b[j] -= round(q * b[i-1], 4)
                 for k in range(matrixA.shape[0]):
-                    matrixA[j][k] = round(matrixA[j][k] - q * matrixA[i-1][k], 4)
+                    matrixA[j][k] = round((matrixA[j][k] - q * matrixA[i-1][k]), 4)
 
     print(f"\nMatrix A after the straight stroke: \n{matrixA}")
     print(f"\nMatrix b after the straight stroke: \n{b}\n")

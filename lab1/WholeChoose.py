@@ -26,9 +26,10 @@ def mainElement(matrixA, b):
             temp = matrixA[k][i]
             matrixA[k] -= matrixA[i] * temp 
             b[k] -= b[i] * temp
-    
+    print(f"\nMatrix A after transforming into a triangle fotm: \n{matrixA}")
+    print(f"\nMatrix b after transforming into a triangle fotm: \n{b}")
+
     #finding roots
-    matrixA = np.array(matrixA)
     roots = [b[b.shape[0] - 1] / (matrixA[matrixA.shape[0] - 1][matrixA.shape[0] - 1])]
     for i in range(matrixA.shape[0] - 2, -1, -1):
         temp = b[i]

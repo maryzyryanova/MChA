@@ -24,7 +24,7 @@ def findMainElement(matrixA, b):
                 b[j] -= temp * b[i]
                 matrixA[j][i] = 0
                 for k in range(i + 1, matrixA.shape[0]):
-                    matrixA[j][k] -= temp * matrixA[i][k]      
+                    matrixA[j][k] -= round(temp * matrixA[i][k], 4)
     print(f"\nMatrix in a triangle form: \n{matrixA}")  
     print(f"\nMatrix b: {b}")    
 
@@ -42,4 +42,4 @@ def findMainElement(matrixA, b):
     #printing roots
     print("\nThe result: ")
     for i in range(len(x)):
-        print(f"x[{i+1}] = {x[i]}")
+        print(f"x[{i+1}] = {round(x[i], 4)}")
