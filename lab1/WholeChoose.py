@@ -63,7 +63,7 @@ def mainElement(matrixA, b):
             temp = matrixA[k][i]
             matrixA[k] -= matrixA[i] * temp 
             b[k] -= b[i] * temp
-
+    
     #finding roots
     roots = [b[b.shape[0] - 1] / (matrixA[matrixA.shape[0] - 1][matrixA.shape[0] - 1])]
     for i in range(matrixA.shape[0] - 2, -1, -1):
