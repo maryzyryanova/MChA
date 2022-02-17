@@ -41,11 +41,13 @@ def findMainElement(matrixA):
         if(i != max_index):
             change, b[i], b[max_index] = b[i], b[max_index], change
         for j in range(i, matrixA.shape[0]):
-            temp = matrixA[j][i] /matrixA[i][i]
-            b[j] -= temp * b[i]
-            matrixA[j][i] = 0
-            for k in range(i + 1, matrixA.shape[0]):
-                matrixA[j][k] -= temp * matrixA[i][k]
-    print(f"Matrix in a triangle form: \n{matrixA}")         
+            if(matrixA[i][i] != 0):
+                temp = matrixA[j][i] /matrixA[i][i]
+                b[j] -= temp * b[i]
+                matrixA[j][i] = 0
+                for k in range(i + 1, matrixA.shape[0]):
+                    matrixA[j][k] -= temp * matrixA[i][k]
+            
+    print(f"\nMatrix in a triangle form: \n{matrixA}")         
 
 main()
