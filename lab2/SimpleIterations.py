@@ -23,10 +23,11 @@ def define():
 
 def check(A):
     for i in range(A.shape[0]):
+        temp = 0
         for j in range(i, A.shape[0]):
             if(i != j):
                 temp += abs(A[i][j])
-        if(abs(A[i]) > temp):
+        if(abs(A[i][i]) > temp):
             continue
         else:
             print(f"Convergence condition isn't keep! String with error: {i}")
@@ -43,15 +44,17 @@ def main():
     A, b = define()
     checkZero(A)
     if(check(A) != 0):
-        alfa, beta, x = []
+        alfa = np.empty((A.shape[0], A.shape[0]), dtype = "float32")
+        beta = np.empty((A.shape[0]), dtype = "float32")
         for i in range(A.shape[0]):
             for j in range(A.shape[0]):
                 if(i == j):
                     alfa[i][j] = 0
                 else:
-                    alfa[i][j] = - A[i][j] / A[i][i]
-            beta[i] = b[i] / A[i][i]
+                    alfa[i][j] = - int(A[i][j] / A[i][i] * 100000) / 10000
+            beta[i] = int(b[i] / A[i][i] * 10000) / 10000
         print(alfa)
+        print("\n")
         print(beta)
 
             
