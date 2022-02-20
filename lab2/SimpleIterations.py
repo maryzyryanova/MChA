@@ -1,26 +1,6 @@
 #Solving SLAE using method of simple iteration
 import numpy as np
 
-def define():
-    A = np.array([])
-    b = np.array([4.2 for i in range(5)])
-    C = np.array([
-        [0.01, 0, -0.02, 0, 0],
-        [0.01, 0.01, -0.02, 0, 0],
-        [0, 0.01, 0.01, 0, -0.02],
-        [0, 0, 0.01, 0.01, 0],
-        [0, 0, 0, 0.01, 0.01]
-    ])
-    D = np.array([
-        [1.33, 0.21, 0.17, 0.12, -0.13],
-        [-0.13, -1.33, 0.11, 0.17, 0.12],
-        [0.12, -0.13, -1.33, 0.11, 0.17],
-        [0.17, 0.12, -0.13, -1.33, 0.11],
-        [0.11, 0.67, 0.12, -0.13, -1.33]
-    ])
-    A = 10*C + D
-    return A, b
-
 def check(A):
     for i in range(A.shape[0]):
         temp = 0
@@ -45,20 +25,22 @@ def findAlfaBeta(A, b, alfa, beta):
                 if(i == j):
                     alfa[i][j] = 0
                 else:
-                    alfa[i][j] = - int(A[i][j] / A[i][i] * 100000) / 10000
-            beta[i] = int(b[i] / A[i][i] * 10000) / 10000
+                    alfa[i][j] = - int(A[i][j] / A[i][i] * 10000) / 10000
+            beta[i][0] = int(b[i] / A[i][i] * 10000) / 10000
     return alfa, beta
 
-def main():
-    print("1. Method of simple iteration: ")
-    A, b = define()
+def findRoots(A, alfa, beta, x0):
+    for i in range(A.shape[0]):
+        x0 = beta + alfa.dot(x0)
+    for i in range(len(x0)):
+        x0[i] = int(x0[i] * 10000) / 10000
+    print(x0)
+
+def mainFunction(A, b):
     checkZero(A)
     if(check(A) != 0):
         alfa = np.empty((A.shape[0], A.shape[0]), dtype = "float32")
-        beta = np.empty((A.shape[0]), dtype = "float32")
+        beta = np.empty((A.shape[0], 1), dtype = "float32")
         alfa, beta = findAlfaBeta(A, b, alfa, beta)
-        x0 = beta.copy()
-
-#x[k] = alfa + beta * x[k-1] 
-
-main()
+        x0 = b.copy()
+        findRoots(A, alfa, beta, x0)
