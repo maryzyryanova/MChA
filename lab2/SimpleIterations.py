@@ -44,8 +44,17 @@ def main():
     checkZero(A)
     if(check(A) != 0):
         alfa, beta, x = []
-        for k in range(1, A.shape[0] - 1):
-            x[k] = alfa + beta * x[k-1]
+        for i in range(A.shape[0]):
+            for j in range(A.shape[0]):
+                if(i == j):
+                    alfa[i][j] = 0
+                else:
+                    alfa[i][j] = - A[i][j] / A[i][i]
+            beta[i] = b[i] / A[i][i]
+        print(alfa)
+        print(beta)
 
-    
-main
+            
+#x[k] = alfa + beta * x[k-1] 
+
+main()
