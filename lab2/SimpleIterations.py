@@ -1,6 +1,6 @@
 #Solving SLAE using method of simple iteration
-
 import numpy as np
+
 def define():
     A = np.array([])
     b = np.array([4.2 for i in range(5)])
@@ -39,6 +39,16 @@ def checkZero(A):
         if(A[i][i] == 0):
             print(f"Element A[{i}][{i}] = 0!")
 
+def findAlfaBeta(A, b, alfa, beta):
+    for i in range(A.shape[0]):
+            for j in range(A.shape[0]):
+                if(i == j):
+                    alfa[i][j] = 0
+                else:
+                    alfa[i][j] = - int(A[i][j] / A[i][i] * 100000) / 10000
+            beta[i] = int(b[i] / A[i][i] * 10000) / 10000
+    return alfa, beta
+
 def main():
     print("1. Method of simple iteration: ")
     A, b = define()
@@ -46,18 +56,9 @@ def main():
     if(check(A) != 0):
         alfa = np.empty((A.shape[0], A.shape[0]), dtype = "float32")
         beta = np.empty((A.shape[0]), dtype = "float32")
-        for i in range(A.shape[0]):
-            for j in range(A.shape[0]):
-                if(i == j):
-                    alfa[i][j] = 0
-                else:
-                    alfa[i][j] = - int(A[i][j] / A[i][i] * 100000) / 10000
-            beta[i] = int(b[i] / A[i][i] * 10000) / 10000
-        print(alfa)
-        print("\n")
-        print(beta)
+        alfa, beta = findAlfaBeta(A, b, alfa, beta)
+        x0 = beta.copy()
 
-            
 #x[k] = alfa + beta * x[k-1] 
 
 main()
