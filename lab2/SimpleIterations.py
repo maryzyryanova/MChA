@@ -11,8 +11,8 @@ def check(A):
             continue
         else:
             print(f"Convergence condition isn't keep! String with error: {i}")
-            return 0
-    return 1
+            return False
+    return True
             
 def checkZero(A):
     for i in range(A.shape[0]):
