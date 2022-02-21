@@ -1,5 +1,6 @@
 import numpy as np
 import SimpleIterations as si
+import Zeydel as zeydel
 
 def define():
     A = np.array([])
@@ -25,5 +26,9 @@ def main():
     print("1. Simple iterations method: ")
     A, b = define()
     si.mainFunction(A, b)
+
+    print("2. Zeydel method: ")
+    A, b = define()
+    
 
 main()
