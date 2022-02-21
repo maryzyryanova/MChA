@@ -29,6 +29,6 @@ def main():
 
     print("2. Zeydel method: ")
     A, b = define()
-    
+    zeydel.main_function(A, b)
 
 main()
