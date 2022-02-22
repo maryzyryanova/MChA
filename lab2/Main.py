@@ -1,7 +1,7 @@
 import numpy as np
 
 A = np.array([])
-b = np.array([[1.2], [2.2], [4.0], [0], [-1.2]])
+b = np.array([1.2, 2.2, 4.0, 0, -1.2])
 C = np.array([
     [0.01, 0, -0.02, 0, 0],
     [0.01, 0.01, -0.02, 0, 0],
@@ -94,7 +94,7 @@ def zeidel_criteria(A):
         for i in range(A.shape[0]):
             s += np.abs(A[i][j])
         second_criteria.append(s)
-    
+       
     return max(second_criteria) < 1
 
 #метод Зейделя
