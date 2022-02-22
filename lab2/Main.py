@@ -73,10 +73,6 @@ def prime_iteration(A, b):
     
     return x, interation_count
 
-x, iters = prime_iteration(A.copy(), b.copy())
-print(f"iterations = {iters}")
-print(f"X = {x}")
-
 def zeidel_criteria(A):
     first_criteria = []
     for i in range(A.shape[0]):
@@ -129,6 +125,12 @@ def zeidel(A, b):
     
     return x, interation_count
 
+x, iters = prime_iteration(A.copy(), b.copy())
+print("1. Method of simple iterations:")
+print(f"Iterations = {iters}")
+print(f"X = {x}")
+
 x, iters = zeidel(A.copy(), b.copy())
-print(f"iterations = {iters}")
+print("\n2. Zeidel's method:")
+print(f"Iterations = {iters}")
 print(f"X = {x}")
