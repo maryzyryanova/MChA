@@ -24,10 +24,16 @@ def define():
     A = 10*C + D
     return A, b
 
-
+def count_oversight(A, b, x):
+    temp = A.dot(x)
+    print("\nYour measure of inaccuracy:")
+    error = abs(temp - b)
+    for i in range(len(error)):
+        print(f"q[{i+1}] = {error[i]: .6f}")
+    
 print("\n1. Using Gauss method:")
 A, b = define()
-gauss_method.gaussMethod(A, b)
+x = gauss_method.gaussMethod(A, b)
 
 print("\n2. Using method of choosing in columns: ")
 A, b = define()
@@ -36,3 +42,6 @@ whole_choose.mainElement(A, b)
 print("\n3. Using method of choosing in the whole matrix: ")
 A, b = define()
 partly_choose.findMainElement(A, b)
+
+A, b = define()
+count_oversight(A, b, x)

@@ -48,5 +48,3 @@ def findMainElement(matrixA, b):
     print("\nThe result: ")
     for i in range(len(x)):
         print(f"x[{i+1}] = {round(x[i], 4)}")
-    for i in range(len(x)):
-        print(f"x[{i+1}] = {x[i]}")

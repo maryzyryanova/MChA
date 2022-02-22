@@ -15,7 +15,9 @@ def gaussMethod(matrixA, b):
     x = [0 for i in range(matrixA.shape[0])] #the list of the koeffs
     for i in range(matrixA.shape[0] - 1, -1, -1):
         if(matrixA[i][i] != 0):
-            x[i] = (b[i] - sum([matrixA[i][j] * x[j] for j in range(i+1, matrixA.shape[0])]))/matrixA[i][i]
+            x[i] = int(((b[i] - sum([matrixA[i][j] * x[j] for j in range(i+1, matrixA.shape[0])]))/matrixA[i][i]) * 10000) / 10000
     print("The result:")
     for i in range(matrixA.shape[0]):
-        print(f"x[{i+1}] = {round(x[i], 4)}")
+        print(f"x[{i+1}] = {x[i]}")
+
+    return x
