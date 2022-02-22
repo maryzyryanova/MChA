@@ -24,6 +24,7 @@ def define():
     A = 10*C + D
     return A, b
 
+
 print("\n1. Using Gauss method:")
 A, b = define()
 gauss_method.gaussMethod(A, b)
