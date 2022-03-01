@@ -1,12 +1,9 @@
 '''Shturm Method'''
-from sympy import * 
+from sympy import *
 import numpy as np
 
-x = Symbol('x')
-
-def shturm_row():
+def shturm_row(y, x):
     '''Create a shturm row'''
-    y = x**3 - 6.4951 * x**2 - 31.2543 * x + 23.1782
     output_row = []
     output_row.append(y)
     output_row.append(y.diff())
@@ -17,11 +14,13 @@ def shturm_row():
         count += 1
     return output_row
 
-def find_n(output_row, interval_border):
+def find_n(output_row, interval_border, x):
     '''Find N(a) and N(b)'''
-    for i in range(output_row):
-        temp_element = output_row[i].subs(x, interval_border)
-
-current_row = shturm_row()
-find_n(current_row, -10)
-find_n(current_row, 10)
+    temp_array = []
+    count = 0
+    for row_element in output_row:
+        temp_array.append(row_element.subs(x, interval_border))
+    for i in range(1, len(temp_array)):
+        if np.sign(temp_array[i-1]) != np.sign(temp_array[i]):
+            count += 1
+    return count
