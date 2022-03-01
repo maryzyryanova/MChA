@@ -10,3 +10,8 @@ def plot():
     sp.spines['left'].set_position('center')
     sp.spines['bottom'].set_position('center')
     plt.show()
+
+def find_solution(y, x):
+    solutions_output = solveset(y, x)
+    for solution in solutions_output:
+        print(int(solution * 10000) / 10000)
