@@ -1,6 +1,5 @@
 '''Half Method'''
 from sympy import *
-import numpy as np
 
 def f(x):
     return x**3 - 6.4951 * x**2 - 31.2543 * x + 23.1782
