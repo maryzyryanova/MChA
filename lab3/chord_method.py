@@ -11,7 +11,7 @@ def get_f_from_polinom(polinom):
         return val
     return f
 
-P = [1, -1, 0, 0]
+P = [1, -6.4951, -31.2543, 23.1782]
 phi = get_f_from_polinom(P)
 
 def N(interval_border):
@@ -67,7 +67,8 @@ def hord(polinom, l, r):
 
 def chord_method():
     bounds = get_bounds(-10, 10)
+    print(bounds)
     l=bounds[0][0]
     r=bounds[0][1]
     dihotomia(l, r)
-    hord(P, bounds[1][0], bounds[1][1])
+    hord(P, l, r)
