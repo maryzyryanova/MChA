@@ -24,3 +24,4 @@ def find_n(output_row, interval_border, x):
         if np.sign(temp_array[i-1]) != np.sign(temp_array[i]):
             count += 1
     return count
+
