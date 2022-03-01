@@ -4,6 +4,7 @@ import shturm_method as sm
 import split_roots as sr
 import half_method as hm
 import chord_method as cm
+import newton_method as nm
 
 def main():
     x = Symbol('x')
@@ -14,6 +15,8 @@ def main():
     hm.half_div()
     print("\n2. Chord method: ")
     cm.chord_method()
+    print("\n3. Newton method: ")
+    nm.newtonsMethod(-10, 0)
     sr.plot()
 
 main()
