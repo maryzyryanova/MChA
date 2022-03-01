@@ -2,7 +2,7 @@
 from sympy import *
 import numpy as np
 
-def shturm_row(y, x):
+def shturm_row(y):
     '''Create a shturm row'''
     output_row = []
     output_row.append(y)
