@@ -11,7 +11,7 @@ def get_f_from_polinom(polinom):
         return val
     return f
 
-P = [1, -1, 0, 0]
+P = [1, -6.4951, -31.2543, 23.1782]
 phi = get_f_from_polinom(P)
 
 def N(interval_border):
@@ -36,7 +36,7 @@ def get_bounds(a, b):
 
 def dihotomia(l, r):
     iters=0
-    while(abs(l-r)>0.0001):
+    while(abs(l-r)>0.00001):
         m=(r+l)/2
         if phi(l)*phi(m)<0:
             r = m
@@ -53,21 +53,43 @@ def hord(polinom, l, r):
             def get_next(xn_1):
                 return xn_1-phi(xn_1)*(r-xn_1)/(phi(r)-phi(xn_1))
             x0 = l
-            while abs(get_next(x0)-x0)>1e-4:
+            while abs(get_next(x0)-x0)>1e-5:
                 x0 = get_next(x0)
                 iters+=1
         else:
             def get_next(xn_1):
                 return xn_1-phi(xn_1)*(l-xn_1)/(phi(l)-phi(xn_1))
             x0 = -6.4951
-            while abs(get_next(x0)-x0)>1e-4:
+            while abs(get_next(x0)-x0)>1e-5:
                 x0 = get_next(x0)
                 iters+=1
-        print(f"hord = {iters} iters, x0 = {x0}")
+        print(f"Iterations: {iters}")
+        print(f"Min root: {int(x0 * 10000) / 10000}")
+
+def newton(polinom, l, r):
+    P0 = np.polyder(polinom).tolist()
+    der_phi = get_f_from_polinom(P0)
+    iters=0
+    P00 = np.polyder(P0).tolist()
+    der_der_phi = get_f_from_polinom(P00)
+    if phi(r)*der_der_phi(r)>0:
+        x0=r
+    else:
+        x0=l
+    def get_next(xn_1):
+        return xn_1 - phi(xn_1)/der_phi(xn_1)
+    while(abs(x0-get_next(x0))>1e-5):
+        x0 = get_next(x0)
+        iters += 1
+    print(f"Iterations: {iters}")
+    print(f"Min root: {int(x0 * 10000) / 10000}")
 
 def chord_method():
     bounds = get_bounds(-10, 10)
-    l=bounds[0][0]
-    r=bounds[0][1]
+    l0=l=bounds[0][0]
+    r0=r=bounds[0][1]
     dihotomia(l, r)
-    hord(P, bounds[1][0], bounds[1][1])
+    print("\n2. Chord method: ")
+    hord(P, l, r)
+    print("\n3. Newton method: ")
+    newton(P, -10, r0)
